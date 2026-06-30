@@ -11,11 +11,6 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('voortgangen', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-        });
-
         Schema::create('voortgang_video', function (Blueprint $table) {
             $table->id();
 

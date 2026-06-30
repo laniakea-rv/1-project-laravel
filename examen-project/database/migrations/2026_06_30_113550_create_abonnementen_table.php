@@ -12,8 +12,8 @@ return new class extends Migration {
     {
         Schema::create('abonnementen', function (Blueprint $table) {
             $table->id();
-            $table->date('start_datum');
-            $table->date('eind_datum')->nullable();
+            $table->date('startDatum');
+            $table->date('eindDatum')->nullable();
             $table->boolean('actief');
             $table->timestamps();
         });
