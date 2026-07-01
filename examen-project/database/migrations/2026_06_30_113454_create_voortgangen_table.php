@@ -14,6 +14,10 @@ return new class extends Migration
         Schema::create('voortgangen',function (Blueprint $table){
             $table->id();
             $table->timestamps();
+            $table->foreignId('user_id')
+                ->unique()
+                ->constrained('users')
+                ->onDelete('cascade');
         });
 
         Schema::create('voortgang_video', function (Blueprint $table) {
