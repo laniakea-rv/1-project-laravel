@@ -1,0 +1,20 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Les extends Model
+{
+    protected $table = 'lessen';
+
+    protected $fillable = [
+        'naam',
+        'beschrijving',
+    ];
+
+    public function videos()
+    {
+        return $this->hasMany(Video::class);
+    }
+}
