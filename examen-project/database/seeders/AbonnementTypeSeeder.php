@@ -16,19 +16,19 @@ class AbonnementTypeSeeder extends Seeder
         Abonnementtype::create([
             'naam' => 'abonnement 1',
             'beschrijving' => 'wow een cool abonnement',
-            'prijs' => '30',
+            'prijs' => 30.00,
 
         ]);
         Abonnementtype::create([
             'naam' => 'abonnement 1',
             'beschrijving' => 'wow een cool abonnement',
-            'prijs' => '30',
+            'prijs' => 30.00,
 
         ]);
         Abonnementtype::create([
             'naam' => 'abonnement 1',
             'beschrijving' => 'wow een cool abonnement',
-            'prijs' => '30',
+            'prijs' => 30.00,
 
         ]);
     }
