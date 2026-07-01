@@ -1,3 +1,10 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <title>abbonement</title>
+</head>
+<body>
 <div>
   @foreach ($abonnement as $item)
     <tr>
@@ -10,3 +17,4 @@
     <br>
   @endforeach
 </div>
+</body>

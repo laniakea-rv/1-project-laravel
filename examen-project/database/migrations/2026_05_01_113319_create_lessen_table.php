@@ -18,19 +18,7 @@ return new class extends Migration
                 $table->timestamps();
             });
 
-            Schema::create('les_video', function (Blueprint $table) {
-            $table->id();
-
-            $table->foreignId('les_id')
-                  ->constrained('lessen')
-                  ->onDelete('cascade');
-
-            $table->foreignId('video_id')
-                  ->constrained('videos')
-                  ->onDelete('cascade');
-
-            $table->timestamps();
-        });
+            
         }
 
     /**
