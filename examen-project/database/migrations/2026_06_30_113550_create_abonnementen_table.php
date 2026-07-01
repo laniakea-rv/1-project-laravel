@@ -15,6 +15,7 @@ return new class extends Migration {
             $table->date('start_datum');
             $table->date('eind_datum')->nullable();
             $table->boolean('actief');
+            $table->foreignId('user_id')->unique()->constrained('users')->onDelete('cascade');
             $table->timestamps();
         });
 

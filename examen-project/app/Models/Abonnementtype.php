@@ -13,4 +13,9 @@ class Abonnementtype extends Model
         'beschrijving',
         'prijs',
     ];
+
+    public function abonnementen()
+    {
+        return $this->hasMany(Abonnement::class);
+    }
 }

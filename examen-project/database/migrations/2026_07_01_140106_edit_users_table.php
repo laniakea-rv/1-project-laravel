@@ -10,22 +10,19 @@ return new class extends Migration
      * Run the migrations.
      */
     public function up(): void
-        {
-            Schema::create('lessen', function (Blueprint $table) {
-                $table->id();
-                $table->string('naam', 45);
-                $table->text('beschrijving')->nullable();
-                $table->timestamps();
-            });
-
-            
-        }
+    {
+        Schema::table('users', function (Blueprint $table) {
+            $table->boolean('is_admin')->default(false)->after('password');
+        });
+    }
 
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('lessen');
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('is_admin');
+        });
     }
 };

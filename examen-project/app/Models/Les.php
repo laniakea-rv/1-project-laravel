@@ -17,4 +17,8 @@ class Les extends Model
     {
         return $this->hasMany(Video::class);
     }
+    public function voortgangen()
+    {
+        return $this->belongsToMany(Voortgang::class, 'les_id', 'voortgang_id');
+    }
 }

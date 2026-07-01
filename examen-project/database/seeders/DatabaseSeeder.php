@@ -15,13 +15,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        
-         $this->call([LesSeeder::class]);
-         $this->call([AbonnementTypeSeeder::class]);
-
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+        $this->call([LesSeeder::class]);
+        $this->call([AbonnementTypeSeeder::class]);
+        $this->call([UserSeeder::class]);
     }
 }
