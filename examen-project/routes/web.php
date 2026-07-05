@@ -14,10 +14,10 @@ Route::middleware('guest')->group(function () {
 
 
 Route::middleware('auth')->group(function () {
-    Route::get('/', function () {return view('welcome');});
-    Route::get('/abonnementen', [AbonnementController::class, 'showAbonnement'])->name('abonnement');
-    Route::get('/lessen', [LesController::class, 'index']);
-    Route::get('/lessen/{les}', [LesController::class, 'show']);
-    
+    Route::get('/', function () {return view('home');});
+    Route::get('/abonnementen', [AbonnementController::class, 'showAbonnement'])->name('abonnementen');
+    Route::get('/lessen', [LesController::class, 'index'])->name('lessen');
+    Route::get('/lessen/{les}', [LesController::class, 'show'])->name('lessen.show');
+
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });
