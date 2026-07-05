@@ -19,7 +19,7 @@
             <input type="password" id="password_confirmation" name="password_confirmation" required>
         </div>
         <br>
-        <button type="submit">Register</button>
+        <button type="submit">Registreer</button>
         <span>of</span>
         <a href="{{ route('login.login') }}">Login</a>
         @if ($errors->any())
