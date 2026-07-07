@@ -20,7 +20,10 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/lessen', [LesController::class, 'index'])->name('lessen');
     Route::get('/lessen/{les}', [LesController::class, 'show'])->name('lessen.show');
-    Route::get('/muziekShop', [MuziekController::class, 'displayMuziek'])->name('muziek');
+
+    Route::get('/muziek', [MuziekController::class, 'index'])->name('muziek');
+    Route::get('/muziek/create', [MuziekController::class, 'create'])->name('muziek.create');
+    Route::post('/muziek/create', [MuziekController::class, 'store'])->name('muziek.store');
 
     Route::get('/abonnementen', [AbonnementController::class, 'showAbonnement'])->name('abonnementen');
     Route::get('/abonnement/create', [AbonnementController::class, 'showAbonnementForm'])->name('abonnementForm');
