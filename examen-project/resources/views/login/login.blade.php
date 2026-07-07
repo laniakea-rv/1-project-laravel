@@ -1,5 +1,5 @@
 <div>
-    <form method="POST" action="{{ route('login.login') }}">
+    <form method="POST" action="{{ route('login') }}">
         @csrf
         <br>
         <div>
