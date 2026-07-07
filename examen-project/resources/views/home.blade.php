@@ -1,5 +1,7 @@
+@extends ("layouts.app")
+@section("content")
+
 <div>
-    <nav>
         <div class="ml-auto">
             <form action="{{ route('logout') }}" method="POST">
                 @csrf
@@ -12,5 +14,5 @@
             <a href="{{ route('lessen') }}">Lessen</a>
             <a href="{{ route('muziek') }}">Muziek</a>
         </div>
-    </nav>
 </div>
+@endsection

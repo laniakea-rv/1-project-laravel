@@ -1,9 +1,5 @@
-<!DOCTYPE html>
-<html lang="nl">
-<head>
-    <meta charset="UTF-8">
-    <title>{{ $les->naam }}</title>
-</head>
+@extends ("layouts.app")
+@section("content")
 
 <body>
 
@@ -24,4 +20,4 @@
 <a href="/lessen">Terug!!</a>
 
 </body>
-</html>
+@endsection

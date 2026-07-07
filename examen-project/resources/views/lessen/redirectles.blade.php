@@ -1,10 +1,5 @@
-<!DOCTYPE html>
-<html lang="nl">
-<head>
-    <meta charset="UTF-8">
-    <title>Les niet beschikbaar</title>
-    <meta http-equiv="refresh" content="3;url=/lessen">
-</head>
+@extends ("layouts.app")
+@section("content")
 
 <body>
 
@@ -14,3 +9,4 @@
 
 </body>
 </html>
+@endsection
