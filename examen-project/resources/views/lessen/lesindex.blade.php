@@ -1,10 +1,5 @@
-<!DOCTYPE html>
-<html lang="nl">
-
-<head>
-    <meta charset="UTF-8">
-    <title>Lessen</title>
-</head>
+@extends ("layouts.app")
+@section("content")
 
 <body>
 
@@ -35,5 +30,4 @@
     </ul>
 
 </body>
-
-</html>
+@endsection

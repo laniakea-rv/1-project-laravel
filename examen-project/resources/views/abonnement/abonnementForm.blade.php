@@ -1,9 +1,5 @@
-<!DOCTYPE html>
-<html lang="nl">
-<head>
-    <meta charset="UTF-8">
-    <title>abbonement</title>
-</head>
+@extends ("layouts.app")
+@section("content")
 <body>
     <form action="{{ route('saveAbonnement') }}" method="POST" enctype="multipart/form-data">
         @csrf
@@ -20,3 +16,4 @@
 
     </form>
 </body>
+@endsection

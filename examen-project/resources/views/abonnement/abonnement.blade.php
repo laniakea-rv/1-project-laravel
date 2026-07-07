@@ -1,9 +1,5 @@
-<!DOCTYPE html>
-<html lang="nl">
-<head>
-    <meta charset="UTF-8">
-    <title>abbonement</title>
-</head>
+@extends ("layouts.app")
+@section("content")
 <body>
 <div>
   @foreach ($abonnement as $item)
@@ -18,3 +14,4 @@
   @endforeach
 </div>
 </body>
+@endsection
