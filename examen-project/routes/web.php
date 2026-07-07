@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AbonnementController;
 use App\Http\Controllers\LesController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\MuziekController;
 
 Route::middleware('guest')->group(function () {
     Route::get('/login', [AuthController::class, 'index'])->name('login.login');
@@ -18,6 +19,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/abonnementen', [AbonnementController::class, 'showAbonnement'])->name('abonnementen');
     Route::get('/lessen', [LesController::class, 'index'])->name('lessen');
     Route::get('/lessen/{les}', [LesController::class, 'show'])->name('lessen.show');
-
+    Route::get('/muziekShop', [MuziekController::class, 'displayMuziek'])->name('muziek');
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+    Route::get('/abonnement/create', [AbonnementController::class, 'showAbonnementForm'])->name('abonnementForm');
+Route::post('/abonnement/create', [AbonnementController::class, 'store'])->name('saveAbonnement');
 });
