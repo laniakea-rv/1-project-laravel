@@ -12,7 +12,7 @@
       <td>{{ $item->naam }}</td>
         <td>{{ $item->beschrijving }}</td>
       <td>{{ $item->prijs }}</td>
-      <td>hello word</td>
+      <td><button>aanschaffen</button></td>
     </tr>
     <br>
   @endforeach

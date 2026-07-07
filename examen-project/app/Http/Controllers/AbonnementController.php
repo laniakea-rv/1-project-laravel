@@ -35,7 +35,7 @@ class AbonnementController extends Controller
 
     $abonnement = Abonnementtype::create($validated);
 
-    dd($abonnement);
+    
 }
 
 }
