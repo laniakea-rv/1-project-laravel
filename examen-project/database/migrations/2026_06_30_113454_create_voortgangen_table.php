@@ -4,20 +4,29 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
     public function up(): void
     {
-        Schema::create('voortgangen',function (Blueprint $table){
+        Schema::create('voortgangen', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+
             $table->foreignId('user_id')
-                ->unique()
-                ->constrained('users')
+                ->constrained()
                 ->onDelete('cascade');
+
+            $table->foreignId('les_id')
+                ->constrained('lessen')
+                ->onDelete('cascade');
+
+            $table->enum('status', ['bezig', 'afgerond'])
+                ->default('bezig');
+
+            $table->timestamps();
+
+            $table->unique(['user_id', 'les_id']);
         });
 
         Schema::create('voortgang_video', function (Blueprint $table) {

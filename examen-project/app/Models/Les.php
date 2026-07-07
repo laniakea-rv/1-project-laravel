@@ -19,6 +19,6 @@ class Les extends Model
     }
     public function voortgangen()
     {
-        return $this->belongsToMany(Voortgang::class, 'les_id', 'voortgang_id');
+        return $this->hasMany(Voortgang::class);
     }
 }

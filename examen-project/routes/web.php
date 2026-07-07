@@ -20,6 +20,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/lessen', [LesController::class, 'index'])->name('lessen');
     Route::get('/lessen/{les}', [LesController::class, 'show'])->name('lessen.show');
+    Route::post('/lessen/{les}/afronden', [LesController::class, 'afronden'])->name('lessen.lesindex');
 
     Route::get('/muziek', [MuziekController::class, 'index'])->name('muziek');
     Route::get('/muziek/create', [MuziekController::class, 'create'])->name('muziek.create');
@@ -30,4 +31,5 @@ Route::middleware('auth')->group(function () {
     Route::post('/abonnement/create', [AbonnementController::class, 'store'])->name('saveAbonnement');
     
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+    
 });
