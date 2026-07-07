@@ -21,7 +21,7 @@
         <br>
         <button type="submit">Registreer</button>
         <span>of</span>
-        <a href="{{ route('login.login') }}">Login</a>
+        <a href="{{ route('login') }}">Login</a>
         @if ($errors->any())
             <div>
                 @foreach ($errors->all() as $error)
