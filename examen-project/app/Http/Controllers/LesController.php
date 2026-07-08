@@ -102,6 +102,8 @@ class LesController extends Controller
 
         $voortgang->touch();
 
+        $les->load('videos');
+
         return view('lessen.showles', compact('les'));
     }
 

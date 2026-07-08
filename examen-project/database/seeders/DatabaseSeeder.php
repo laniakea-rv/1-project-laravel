@@ -18,5 +18,6 @@ class DatabaseSeeder extends Seeder
         $this->call([LesSeeder::class]);
         $this->call([AbonnementTypeSeeder::class]);
         $this->call([UserSeeder::class]);
+        $this->call([VideoSeeder::class]);
     }
 }
