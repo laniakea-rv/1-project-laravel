@@ -1,3 +1,5 @@
+@extends ("layouts.app")
+@section("content")
 <div>
     <form method="POST" action="{{ route('muziek.update', $muziek->id) }}" enctype="multipart/form-data">
         @csrf
@@ -44,3 +46,4 @@
         @endif
     </form>
 </div>
+@endsection
