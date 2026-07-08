@@ -22,6 +22,7 @@
             <a href="{{ route('abonnementen') }}">Abonnementen</a>
             <a href="{{ route('lessen') }}">Lessen</a>
             <a href="{{ route('muziek') }}">Muziek</a>
+            <a href="{{ route('liveStream') }}">Stream</a>
         </div>
     </nav>
     <div>

@@ -1,3 +1,5 @@
+@extends ("layouts.app")
+@section("content")
 <table>
   @foreach ($muziek as $item)
     <tr>
@@ -28,3 +30,4 @@
     <br>
   @endforeach
 </table>
+@endsection
