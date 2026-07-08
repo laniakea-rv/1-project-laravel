@@ -15,6 +15,7 @@ return new class extends Migration
                 $table->id();
                 $table->string('naam', 45);
                 $table->text('beschrijving')->nullable();
+                $table->string('onderwerp', 45)->nullable();
                 $table->timestamps();
             });
 
