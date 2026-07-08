@@ -1,7 +1,7 @@
 <table>
   @foreach ($muziek as $item)
     <tr>
-      <td>{{ $item->id }}</td>
+    <tr data-id="{{ $item->id }}">
       <td>{{ $item->naam }}</td>
       <td>{{ $item->beschrijving }}</td>
       <td>{{ $item->prijs }}</td>
@@ -18,7 +18,12 @@
           </audio>
         </td>
       @endif
-      <td>hello word</td>
+      <td><a href=""{{ asset('storage/' . $item->bestand) }}"" download class="btn btn-primary">
+        Koop
+      </a></td>
+      <td><a  href="{{ route('muziek.edit', $item) }}" >
+        edit
+      </a></td>
     </tr>
     <br>
   @endforeach

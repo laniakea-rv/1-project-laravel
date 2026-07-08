@@ -11,23 +11,60 @@ class LesController extends Controller
 {
     public function index()
     {
-        $lessen = Les::with([
+        $search = request('search');
+
+        $kiesOnderwerp = request('onderwerp');
+
+        $lessen = $this->getLessen($kiesOnderwerp, $search);
+
+        $progressie = $this->getProgressie();
+
+        $lessen = $this->progressie($lessen, $progressie);
+
+        $onderwerp = $this->getOnderwerp();
+
+        return view('lessen.lesindex', compact(
+            'lessen',
+            'progressie',
+            'onderwerp',
+            'kiesOnderwerp',
+            'search'
+        ));
+    }
+
+    private function getLessen($kiesOnderwerp, $search)
+    {
+        $query = Les::with([
             'voortgangen' => function ($query) {
                 $query->where('user_id', auth()->id());
             }
-        ])->get();
+        ]);
 
-        $laatsteVoortgang = Voortgang::where('user_id', auth()->id())
+        if ($kiesOnderwerp) {
+            $query->where('onderwerp', $kiesOnderwerp);
+        }
+        if ($search) {
+            $query->where('naam', 'like', '%' . $search . '%');
+        }
+        return $query->get();
+    }
+
+    private function getProgressie()
+    {
+        return Voortgang::where('user_id', auth()->id())
             ->latest('updated_at')
             ->first();
+    }
 
+    private function progressie($lessen, $progressie)
+    {
         foreach ($lessen as $les) {
-            $voortgang = $les->voortgangen->first();
+            $progress = $les->voortgangen->first();
 
-            if (!$voortgang) {
+            if (!$progress) {
                 $les->klasse = 'niet-gestart';
                 $les->statusTekst = 'Nog niet gestart';
-            } elseif ($voortgang->status === 'bezig') {
+            } elseif ($progress->status === 'bezig') {
                 $les->klasse = 'bezig';
                 $les->statusTekst = 'Bezig';
             } else {
@@ -35,13 +72,21 @@ class LesController extends Controller
                 $les->statusTekst = 'Afgerond';
             }
 
-            $les->laatstBekeken = $laatsteVoortgang && $les->id == $laatsteVoortgang->les_id;
+            $les->lastViewed = $progressie && $les->id == $progressie->les_id;
         }
 
-        $lessen = $lessen->sortByDesc('laatstBekeken')->values();
-
-        return view('lessen.lesindex', compact('lessen', 'laatsteVoortgang'));
+        return $lessen->sortByDesc('lastViewed')->values();
     }
+
+    private function getOnderwerp()
+    {
+        return Les::select('onderwerp')
+            ->distinct()
+            ->orderBy('onderwerp')
+            ->pluck('onderwerp');
+    }
+
+
 
     public function show(Les $les)
     {
