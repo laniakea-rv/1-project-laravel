@@ -8,7 +8,23 @@
 <p>{{ $les->beschrijving}}</p>
 
 <div>
-    <img src="https://static.wikia.nocookie.net/mysingingmonsters/images/4/46/Drumpler.png/revision/latest?cb=20251207100009" alt="sams buik">
+
+    @forelse($les->videos as $video)
+
+        <h3>{{ $video->naam }}</h3>
+
+        <iframe
+            width="560"
+            height="315"
+            src="{{ $video->bestand }}"
+            allowfullscreen>
+        </iframe>
+
+    @empty
+
+        <p>Geen video beschikbaar.</p>
+
+    @endforelse
 </div>
 <form method="POST" action="{{ route('lessen.lesindex', $les) }}">
     @csrf

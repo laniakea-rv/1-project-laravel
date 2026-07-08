@@ -8,8 +8,8 @@ class Video extends Model
 {
     protected $fillable = [
         'les_id',
-        'titel',
-        'url',
+        'naam',
+        'bestand',
     ];
 
     public function les()
