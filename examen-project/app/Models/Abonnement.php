@@ -7,6 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 class Abonnement extends Model
 {
     //
+    protected $fillable = [
+        'user_id',
+        'abonnementtype_id',
+        'start_datum',
+        'eind_datum',
+        'active',
+    ];
 
     public function user()
     {
