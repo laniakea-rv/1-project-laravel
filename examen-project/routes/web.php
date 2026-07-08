@@ -29,12 +29,12 @@ Route::middleware('auth')->group(function () {
     Route::put('/muziek/{muziek}', [MuziekController::class, 'update'])->name('muziek.update');
     Route::get('/muziek/{muziek}/edit', [MuziekController::class, 'edit'])->name('muziek.edit');
 
-    Route::get('/abonnementen', [AbonnementController::class, 'showAbonnement'])->name('abonnementen');
+    Route::get('/abonnementen', [AbonnementController::class, 'showAbonnementen'])->name('abonnementen');
     Route::get('/abonnement/create', [AbonnementController::class, 'showAbonnementForm'])->name('abonnementForm');
-    Route::post('/abonnement/create', [AbonnementController::class, 'store'])->name('saveAbonnement');
-
+    Route::post('/abonnement/create', [AbonnementController::class, 'storeAbonnement'])->name('saveAbonnement');
     Route::get('/stream', [StreamController::class, 'showStream'])->name('liveStream');
-    
+
+    Route::post('/abonnement/link', [AbonnementController::class, 'storeUserAbonnement'])->name('saveUserAbonnement');
+
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-    
 });
