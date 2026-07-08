@@ -11,6 +11,7 @@ class Les extends Model
     protected $fillable = [
         'naam',
         'beschrijving',
+        'onderwerp',
     ];
 
     public function videos()

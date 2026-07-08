@@ -4,7 +4,7 @@
 <body>
 
 <h1>{{ $les->naam}}</h1>
-
+<h2>{{ $les->onderwerp}}</h2>
 <p>{{ $les->beschrijving}}</p>
 
 <div>
