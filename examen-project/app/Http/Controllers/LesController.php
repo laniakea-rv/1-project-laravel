@@ -12,15 +12,10 @@ class LesController extends Controller
     public function index()
     {
         $search = request('search');
-
         $kiesOnderwerp = request('onderwerp');
-
         $lessen = $this->getLessen($kiesOnderwerp, $search);
-
         $progressie = $this->getProgressie();
-
         $lessen = $this->progressie($lessen, $progressie);
-
         $onderwerp = $this->getOnderwerp();
 
         return view('lessen.lesindex', compact(
@@ -86,8 +81,6 @@ class LesController extends Controller
             ->pluck('onderwerp');
     }
 
-
-
     public function show(Les $les)
     {
         $voortgang = Voortgang::firstOrCreate(
@@ -120,6 +113,4 @@ class LesController extends Controller
 
         return redirect()->back();
     }
-
-
 }
