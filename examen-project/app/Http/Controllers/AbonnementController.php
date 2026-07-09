@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Abonnementtype;
 use App\Models\Abonnement;
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class AbonnementController extends Controller
 {
