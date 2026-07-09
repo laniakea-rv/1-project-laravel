@@ -35,6 +35,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/stream', [StreamController::class, 'showStream'])->name('liveStream');
 
     Route::post('/abonnement/link', [AbonnementController::class, 'storeUserAbonnement'])->name('saveUserAbonnement');
+    Route::put('/abonnement/unlink', [AbonnementController::class, 'opzeggenUserAbonnement'])->name('opzeggenUserAbonnement');
 
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });
