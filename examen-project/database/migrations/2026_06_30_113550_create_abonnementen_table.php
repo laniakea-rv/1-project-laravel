@@ -16,16 +16,9 @@ return new class extends Migration {
             $table->date('eind_datum')->nullable();
             $table->boolean('actief');
             $table->foreignId('user_id')->unique()->constrained('users')->onDelete('cascade');
-            $table->timestamps();
-        });
-
-        Schema::create('abonnementen_abonnementtype', function (Blueprint $table) {
-            $table->id();
             $table->foreignId('abonnementtype_id')->constrained('abonnementtypes')->onDelete('cascade');
-            $table->foreignId('abonnement_id')->constrained('abonnementen')->onDelete('cascade');
             $table->timestamps();
         });
-
     }
 
     /**
@@ -34,5 +27,6 @@ return new class extends Migration {
     public function down(): void
     {
         Schema::dropIfExists('abonnementen');
+        Schema::dropIfExists('abonnementen_abonnementtype');
     }
 };

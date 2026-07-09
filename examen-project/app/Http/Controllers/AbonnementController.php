@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Abonnementtype;
 use App\Models\Abonnement;
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class AbonnementController extends Controller
 {
@@ -38,7 +39,7 @@ class AbonnementController extends Controller
             'active' => 'required|boolean',
             'abonnementtype_id' => 'required|exists:abonnementtypes,id',
         ]);
-        $user = auth()->user();
+        $user = request()->user();
 
         $user->abonnementen()->create([
             'start_datum' => $validated['start_datum'],
