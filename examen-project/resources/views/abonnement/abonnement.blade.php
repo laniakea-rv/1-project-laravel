@@ -8,7 +8,10 @@
       <td>{{ $item->naam }}</td>
         <td>{{ $item->beschrijving }}</td>
       <td>{{ $item->prijs }}</td>
-      <td><button>aanschaffen</button></td>
+      <td> <form action="{{ route('saveUserAbonnement')}}" method="post">
+        @csrf
+        <input type="hidden" name="id" value="{{ $item->id }}">
+        <button type="submit">aanschaffen</button></form></td>
     </tr>
     <br>
   @endforeach
