@@ -21,6 +21,6 @@ class Abonnement extends Model
     }
     public function abonnementtype()
     {
-        return $this->hasOne(Abonnementtype::class);
+        return $this->belongsTo(Abonnementtype::class);
     }
 }
