@@ -14,18 +14,25 @@
     @foreach($users as $user)
 
       @php
-        $abonnement = $user->abonnementen->where('actief',  1)->first();
+        $huidigAbonnement = $user->abonnementen->where('actief', 1)->first();
+        $normaalAbonnement = $user->abonnementen->sortByDesc('start_datum')->first();
       @endphp
+
       <tr>
         <td>{{ $user->id }}</td>
         <td>{{ $user->name }}</td>
         <td>{{ $user->email }}</td>
-        @if($abonnement)
-          <td>{{ $abonnement->naam }}</td>
-          <td>{{ $abonnement->start_datum }}</td>
-          <td>{{ $abonnement->eind_datum }}</td>
+
+        @if($huidigAbonnement)
+          <td>{{ $huidigAbonnement->abonnementtype->naam }}</td>
         @else
-          <td>Geen abonnement</td>
+          <td>Geen huidig abonnement</td>
+        @endif
+
+        @if($huidigAbonnement)
+          <td>{{ $huidigAbonnement->start_datum }}</td>
+          <td>{{ $huidigAbonnement->eind_datum }}</td>
+        @else
           <td>-</td>
           <td>-</td>
         @endif
@@ -34,5 +41,4 @@
     @endforeach
 
   </table>
-
 @endsection
