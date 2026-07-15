@@ -26,24 +26,10 @@
                     Uitloggen
                 </button>
             </form>
-            <a href="{{ route('muziek') }}" class="bg-white text-black px-6 py-3 rounded shadow hover:bg-gray-400">
-                Muziek kopen
-            </a>
-            <a href="{{ route('liveStream') }}"
-                class="bg-white text-black px-6 py-3 rounded shadow hover:bg-gray-400">
-                Stream
-            </a>
+
             <p class="text-5xl">Welkom, {{ Auth::user()->name }}</p>
-            <a href="https://c.tenor.com/Zc0YP-vwW0IAAAAd/tenor.gif"
-                class="bg-white text-black px-6 py-3 rounded shadow hover:bg-gray-400">
-                Workshops
-            </a>
-            <a href="{{ route('abonnementen') }}"
-                class="bg-white text-black px-6 py-3 rounded shadow hover:bg-gray-400">
-                Abonnementen
-            </a>
-            <a href="{{ route('lessen') }}" class="bg-white text-black px-6 py-3 rounded shadow hover:bg-gray-400">
-                Lessen
+            <a href="{{ route('login') }}" class="bg-white text-black px-6 py-3 rounded shadow hover:bg-gray-400">
+                login
             </a>
         </div>
     </nav>

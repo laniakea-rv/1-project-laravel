@@ -38,6 +38,7 @@ Route::middleware('auth')->group(function () {
     route::get('/user', [UserController::class, 'showUser'])->name('showUser');
     
     Route::post('/abonnement/link', [AbonnementController::class, 'storeUserAbonnement'])->name('saveUserAbonnement');
+    Route::put('/abonnement/unlink', [AbonnementController::class, 'opzeggenUserAbonnement'])->name('opzeggenUserAbonnement');
 
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });
