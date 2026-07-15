@@ -1,7 +1,9 @@
 @extends ("layouts.app")
 @section("content")
 <body>
-    <form action="{{ route('saveAbonnement') }}" method="POST" enctype="multipart/form-data">
+    <div class="flex justify-center">
+    <form class='bg-gray-100 mt-10 w-5/6 rounded shadow flex flex-col' 
+    action="{{ route('saveAbonnement') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <label for="naam">naam</label>
         <input type="text" name="naam" class="abonnement-control">
@@ -15,5 +17,6 @@
         <button type="submit" class="btn btn-primary">abonnement opslaan</button>
 
     </form>
+</div>
 </body>
 @endsection
