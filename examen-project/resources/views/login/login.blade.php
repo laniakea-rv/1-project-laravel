@@ -1,25 +1,56 @@
-<div>
-    <form method="POST" action="{{ route('login') }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>{{ config('app.name', 'Laravel') }}</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" />
+
+    <!-- Styles / Scripts -->
+    @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @endif
+</head>
+<nav class="bg-green-900 text-white px-6 py-4 flex items-center justify-center shadow-md font-bold text-2xl">login</nav>
+<div class="max-w-md mx-auto bg-white p-6 rounded-xl shadow mt-8">
+    <form method="POST" action="{{ route('login') }}" class="flex flex-col gap-4">
         @csrf
-        <br>
+
         <div>
-            <label for="email">email</label>
-            <input type="email" id="email" name="email" value="email" required>
+            <label for="email" class="block mb-1 font-medium">email</label>
+            <input type="email" id="email" name="email" value="email" required class="border p-2 rounded w-full"
+                autocomplete="email">
         </div>
+
         <div>
-            <label for="password">wachtwoord</label>
-            <input type="password" id="password" name="password" required>
+            <label for="password" class="block mb-1 font-medium">wachtwoord</label>
+            <input type="password" id="password" name="password" required class="border p-2 rounded w-full"
+                autocomplete="current-password">
         </div>
-        <br>
-        <button type="submit">Login</button>
-        <span>of</span>
-        <a href="{{ route('login.register') }}">Registeer</a>
+
+        <button type="submit" class="bg-green-600 text-white py-2 rounded hover:bg-green-700 transition">
+            Login
+        </button>
+
+        <span class="text-center">of</span>
+
+        <a href="{{ route('login.register') }}"
+            class="hover:text-red-500 transition text-black inline-block text-center">
+            Registeer
+        </a>
+
         @if ($errors->any())
-            <div>
+            <div class="mt-4">
                 @foreach ($errors->all() as $error)
-                    <p>{{ $error }}</p>
+                    <p class="text-red-500">{{ $error }}</p>
                 @endforeach
             </div>
         @endif
     </form>
 </div>
+
+</html>
