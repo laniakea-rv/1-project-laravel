@@ -2,24 +2,26 @@
 @section("content")
 
   <body class="">
+    <div class="flex justify-center">
     <div class='bg-gray-300 text-black mt-10 w-6/7 rounded shadow pt-3 '>
       @if(session('error'))
         <p>{{ session('error') }}</p>
       @endif
       @foreach ($abonnementen as $item)
+      <div class="flex justify-center">
       <div class=" bg-gray-100 mt-3 w-5/6 rounded shadow ">
-        <tr >
+        <tr>
           <td>{{ $item->naam }}</td>
           <td>{{ $item->beschrijving }}</td>
-          <td>{{ $item->prijs }}</td>
+          <td>€{{ $item->prijs }}</td>
           <td>
             <form action="{{ route('saveUserAbonnement')}}" method="post">
               @csrf
               <input type="hidden" name="id" value="{{ $item->id }}">
               <button type="submit">aanschaffen</button>
-            </form>
           </td>
         </tr>
+      </div>
       </div>
         <br>
       @endforeach
@@ -34,5 +36,6 @@
         <p>je hebt nog geen actief abonnement, laten we dat veranderen</p>
       @endif
     </div>
+  </div>
   </body>
 @endsection
