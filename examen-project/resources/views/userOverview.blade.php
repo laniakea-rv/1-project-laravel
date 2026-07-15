@@ -1,8 +1,9 @@
 @extends("layouts.app")
 
 @section("content")
-  <table>
-    <tr>
+<div class="flex justify-center">
+  <table class="bg-gray-300 text-black px-6 py-3 rounded shadow w-6/7 mt-10 overflow-auto">
+    <tr class="border-collapse border border-gray-500">
       <th>ID</th>
       <th>Naam</th>
       <th>Email</th>
@@ -17,7 +18,7 @@
         $huidigAbonnement = $user->abonnementen->where('actief', 1)->first();
       @endphp
 
-      <tr>
+      <tr > 
         <td>{{ $user->id }}</td>
         <td>{{ $user->name }}</td>
         <td>{{ $user->email }}</td>
@@ -40,4 +41,5 @@
     @endforeach
 
   </table>
+</div>
 @endsection
