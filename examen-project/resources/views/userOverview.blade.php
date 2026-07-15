@@ -15,7 +15,6 @@
 
       @php
         $huidigAbonnement = $user->abonnementen->where('actief', 1)->first();
-        $normaalAbonnement = $user->abonnementen->sortByDesc('start_datum')->first();
       @endphp
 
       <tr>
