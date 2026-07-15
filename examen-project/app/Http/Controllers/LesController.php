@@ -35,15 +35,28 @@ class LesController extends Controller
             }
         ]);
 
+        $user = Auth::user();
+
+        $abonnement = $user->abonnementen()
+            ->where('actief', true)
+            ->first();
+
+        if (!$abonnement) {
+            return collect();
+        }
+
+        $query->where('abonnement_type_id', $abonnement->abonnementtype_id);
+
         if ($kiesOnderwerp) {
             $query->where('onderwerp', $kiesOnderwerp);
         }
+
         if ($search) {
             $query->where('naam', 'like', '%' . $search . '%');
         }
+
         return $query->get();
     }
-
     private function getProgressie()
     {
         return Voortgang::where('user_id', auth()->id())
@@ -83,9 +96,19 @@ class LesController extends Controller
 
     public function show(Les $les)
     {
+        $user = Auth::user();
+
+        $abonnement = $user->abonnementen()
+            ->where('actief', true)
+            ->first();
+
+        if (!$abonnement || $les->abonnement_type_id != $abonnement->abonnementtype_id) {
+            abort(403, 'Je hebt geen toegang tot deze les.');
+        }
+
         $voortgang = Voortgang::firstOrCreate(
             [
-                'user_id' => Auth::id(),
+                'user_id' => $user->id,
                 'les_id' => $les->id,
             ],
             [
@@ -99,7 +122,6 @@ class LesController extends Controller
 
         return view('lessen.showles', compact('les'));
     }
-
     public function afronden(Les $les)
     {
         $voortgang = Voortgang::where('user_id', auth()->id())

@@ -29,10 +29,18 @@ class VideoSeeder extends Seeder
             'naam' => 'percussie',
             'bestand' =>"https://www.youtube.com/embed/XUERPM7NGN0",
         ]);
+        
         Video::create([
             'les_id' => 3,
             'naam' => 'sams youtube',
             'bestand' =>"https://www.youtube.com/embed/BXSREHYstkQ",
         ]);
+        Video::create([
+            'les_id' => 4,
+            'naam' => 'bongos lessen',
+            'bestand' =>"https://www.youtube.com/embed/zEJpZxJDbLU",
+        ]);
+
+        
     }
 }
