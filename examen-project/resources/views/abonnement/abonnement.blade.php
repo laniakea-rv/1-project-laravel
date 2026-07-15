@@ -1,13 +1,14 @@
 @extends ("layouts.app")
 @section("content")
 
-  <body>
-    <div>
+  <body class="">
+    <div class='bg-gray-300 text-black mt-10 w-6/7 rounded shadow pt-3 '>
       @if(session('error'))
         <p>{{ session('error') }}</p>
       @endif
       @foreach ($abonnementen as $item)
-        <tr>
+      <div class=" bg-gray-100 mt-3 w-5/6 rounded shadow ">
+        <tr >
           <td>{{ $item->naam }}</td>
           <td>{{ $item->beschrijving }}</td>
           <td>{{ $item->prijs }}</td>
@@ -19,6 +20,7 @@
             </form>
           </td>
         </tr>
+      </div>
         <br>
       @endforeach
       @if($huidigAbonnement)
