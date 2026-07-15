@@ -12,6 +12,7 @@ class Les extends Model
         'naam',
         'beschrijving',
         'onderwerp',
+        'abonnement_type_id',
     ];
 
     public function videos()
@@ -21,5 +22,10 @@ class Les extends Model
     public function voortgangen()
     {
         return $this->hasMany(Voortgang::class);
+    }
+
+    public function abonnementType()
+    {
+        return $this->belongsTo(AbonnementType::class);
     }
 }
