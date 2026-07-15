@@ -6,6 +6,7 @@ use App\Http\Controllers\LesController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MuziekController;
 use App\Http\Controllers\StreamController;
+use App\Http\Controllers\UserController;
 
 Route::middleware('guest')->group(function () {
     Route::get('/', function () {return view('login');});
@@ -33,7 +34,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/abonnement/create', [AbonnementController::class, 'showAbonnementForm'])->name('abonnementForm');
     Route::post('/abonnement/create', [AbonnementController::class, 'storeAbonnement'])->name('saveAbonnement');
     Route::get('/stream', [StreamController::class, 'showStream'])->name('liveStream');
-
+    Route::get('/users', [UserController::class, 'showusers'])->name('userOverview');
+    route::get('/user', [UserController::class, 'showUser'])->name('showUser');
+    
     Route::post('/abonnement/link', [AbonnementController::class, 'storeUserAbonnement'])->name('saveUserAbonnement');
     Route::put('/abonnement/unlink', [AbonnementController::class, 'opzeggenUserAbonnement'])->name('opzeggenUserAbonnement');
 

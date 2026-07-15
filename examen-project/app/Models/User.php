@@ -31,6 +31,7 @@ class User extends Authenticatable
         ];
     }
 
+
     public function voortgang()
     {
         return $this->hasOne(Voortgang::class);
@@ -38,6 +39,7 @@ class User extends Authenticatable
     public function abonnementen()
     {
         return $this->hasMany(Abonnement::class);
+
     }
     public function workshops()
     {

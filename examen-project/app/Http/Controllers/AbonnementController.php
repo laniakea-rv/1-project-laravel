@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Abonnementtype;
 use App\Models\Abonnement;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 
 class AbonnementController extends Controller
@@ -14,6 +15,13 @@ class AbonnementController extends Controller
         $user = request()->user();
         $huidigAbonnement = $user->abonnementen()->where('actief', true)->first();
         return view('abonnement.abonnement', compact('abonnementen', 'huidigAbonnement'));
+    }
+
+    public function showUserAbonnement()
+    {
+        $userId = Auth::user()->id;
+        $user = Abonnement::where('id', $userId)->get();
+        return view('userDisplay', compact('user'));
     }
 
     public function showAbonnementForm()
