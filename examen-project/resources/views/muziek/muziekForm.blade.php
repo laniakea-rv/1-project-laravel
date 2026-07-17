@@ -1,7 +1,7 @@
 @extends ("layouts.app")
 @section("content")
 <div class="flex justify-center">
-    <form class="bg-gray-300 mt-10 w-5/6 rounded shadow flex flex-col pt-5"
+    <form class="bg-gray-300 mt-10 w-5/6 rounded shadow flex flex-col pt-5 px-5"
     method="POST" action="{{ route('muziek.store') }}" enctype="multipart/form-data">
         @csrf
         <br>
@@ -26,7 +26,7 @@
             <input class="" type="file" id="afbeelding" name="afbeelding" required>
         </div>
         <br>
-        <button class="bg-gray-100 mb-5" type="submit">Upload</button>
+        <button class="bg-gray-100 mb-5 rounded" type="submit">Upload</button>
         @if ($errors->any())
             <div>
                 @foreach ($errors->all() as $error)
