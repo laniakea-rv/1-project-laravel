@@ -66,21 +66,22 @@ class AbonnementController extends Controller
     }
 
     public function opzeggenUserAbonnement(Request $request)
-    {
-        $user = request()->user();
-        $abonnement = $user->abonnementen()->where('actief', true)->first();
+{
+    $user = $request->user();
 
-        if ($abonnement->user_id !== $user->id) {
-            return back()->with('error', 'dit is NIET jouw abonnement, niet hacken op onze website ik ZIE je wel');
-        }
+    $abonnement = $user->abonnementen()
+        ->where('actief', true)
+        ->first();
 
-        if ($abonnement) {
-            $abonnement->update([
-                'eind_datum' => now(),
-                'actief' => false,
-            ]);
-        }
-
-        return back();
+    if (!$abonnement) {
+        return back()->with('error', 'Je hebt geen actief abonnement.');
     }
+
+    $abonnement->update([
+        'eind_datum' => now(),
+        'actief' => false,
+    ]);
+
+    return back()->with('success', 'Je abonnement is opgezegd.');
+}
 }
