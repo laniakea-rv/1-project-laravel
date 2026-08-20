@@ -8,14 +8,6 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
-    public function showusers()
-    {
-
-        $users = User::with('abonnementen.abonnementtype')->get();
-        return view('userOverview', compact('users'));
-    }
-
-    
     public function showUser()
     {
         $user = request()->user();
@@ -24,6 +16,26 @@ class UserController extends Controller
             ->where('actief', 1)
             ->first();
 
-        return view('userDisplay', compact('user', 'huidigAbonnement'));
+        return view('users.userDisplay', compact('user', 'huidigAbonnement'));
+    }
+
+    public function editUser()
+    {
+        $user = request()->user();
+        return view('users.userEdit', compact('user'));
+    }
+
+    public function updateUser(Request $request, $id)
+    {
+        $user = User::findOrFail($id);
+
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users,email,' . $user->id,
+        ]);
+
+        $user->update($validatedData);
+
+        return redirect()->route('user')->with('success', 'Profiel succesvol bijgewerkt.');
     }
 }
