@@ -9,7 +9,8 @@ use Illuminate\Database\Eloquent\Attributes\Hidden;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use App\Models\Voortgang;
+use app\Models\Voortgang;
+use App\Models\Workshop;
 
 #[Fillable(['name', 'email', 'password'])]
 #[Hidden(['password', 'remember_token'])]
@@ -43,6 +44,11 @@ class User extends Authenticatable
     }
     public function workshops()
     {
-        return $this->belongsToMany(Workshop::class, 'user_id', 'workshop_id');
+        return $this->belongsToMany(
+            Workshop::class,
+            'workshop_user',
+            'user_id',
+            'workshop_id'
+        );
     }
 }

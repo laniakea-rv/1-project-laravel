@@ -34,7 +34,7 @@
                 Stream
             </a>
             <p class="text-5xl">Welkom, {{ Auth::user()->name }}</p>
-            <a href="https://c.tenor.com/Zc0YP-vwW0IAAAAd/tenor.gif"
+            <a href="{{ route('workshops') }}"
                 class="bg-white text-black px-6 py-3 rounded shadow hover:bg-gray-400">
                 Workshops
             </a>
