@@ -7,6 +7,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MuziekController;
 use App\Http\Controllers\StreamController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\WorkshopController;
 
 Route::middleware('guest')->group(function () {
     Route::get('/', function () {return view('login');});
@@ -36,7 +37,15 @@ Route::middleware('auth')->group(function () {
     Route::get('/stream', [StreamController::class, 'showStream'])->name('liveStream');
     Route::get('/users', [UserController::class, 'showusers'])->name('userOverview');
     route::get('/user', [UserController::class, 'showUser'])->name('showUser');
-    
+
+    Route::get('/workshops', [WorkshopController::class, 'index'])->name('workshops');
+    Route::get('/workshops/create', [WorkshopController::class, 'create'])->name('workshop.create');
+    Route::post('/workshops/create', [WorkshopController::class, 'store'])->name('workshop.store');
+    Route::get('/workshops/{workshop}', [WorkshopController::class, 'show'])->name('workshop.show');
+    Route::post('/workshops/inschrijven', [WorkshopController::class, 'inschrijven'])->name('workshop.inschrijven');
+    Route::get('/workshops/{workshop}/edit', [WorkshopController::class, 'edit'])->name('workshop.edit');
+    Route::put('/workshops/{workshop}', [WorkshopController::class, 'update'])->name('workshop.update');
+
     Route::post('/abonnement/link', [AbonnementController::class, 'storeUserAbonnement'])->name('saveUserAbonnement');
     Route::put('/abonnement/unlink', [AbonnementController::class, 'opzeggenUserAbonnement'])->name('opzeggenUserAbonnement');
 
