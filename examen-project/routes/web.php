@@ -41,8 +41,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/abonnement/create', [AbonnementController::class, 'showAbonnementForm'])->name('abonnementForm');
     Route::post('/abonnement/create', [AbonnementController::class, 'storeAbonnement'])->name('saveAbonnement');
     Route::get('/stream', [StreamController::class, 'showStream'])->name('liveStream');
-    Route::get('/users', [UserController::class, 'showusers'])->name('userOverview');
-    route::get('/user', [UserController::class, 'showUser'])->name('showUser');
+    Route::get('/user', [UserController::class, 'showUser'])->name('user');
+    Route::get('/user/edit', [UserController::class, 'editUser'])->name('user.edit');
+    Route::put('/user/{user}', [UserController::class, 'updateUser'])->name('user.update');
 
     Route::get('/workshops', [WorkshopController::class, 'index'])->name('workshops');
     Route::get('/workshops/create', [WorkshopController::class, 'create'])->name('workshop.create');
