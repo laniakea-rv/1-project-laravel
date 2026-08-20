@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Les;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Voortgang;
+use App\Models\AbonnementType;
+use App\Models\Video;
 
 class LesController extends Controller
 {
@@ -134,5 +136,65 @@ class LesController extends Controller
         }
 
         return redirect()->back();
+    }
+    public function create()
+    {
+        if (!auth()->user()->is_admin) {
+            abort(403);
+        }
+
+        $abonnementTypes = AbonnementType::all();
+
+        return view('lessen.lescreate', compact('abonnementTypes'));
+    }
+
+    public function store(Request $request)
+    {
+        if (!auth()->user()->is_admin) {
+            abort(403);
+        }
+
+        $request->validate([
+            'abonnement_type_id' => 'required|exists:abonnementtypes,id',
+            'naam' => 'required|string|max:45',
+            'onderwerp' => 'required|string|max:255',
+            'beschrijving' => 'required|string',
+
+            'video_naam' => 'required|string|max:255',
+            'video' => 'required|string',
+        ]);
+
+        preg_match('/src=["\']([^"\']+)["\']/', $request->video, $matches);
+
+        if (!isset($matches[1])) {
+            return back()
+                ->withErrors(['video' => 'geen goede iframe'])
+                ->withInput();
+        }
+
+        $youtubeUrl = $matches[1];
+
+        if (!preg_match('/^https:\/\/www\.youtube\.com\/embed\/[a-zA-Z0-9_-]+$/', $youtubeUrl)) {
+            return back()
+                ->withErrors(['video' => 'geen goede iframe'])
+                ->withInput();
+        }
+
+        $les = Les::create([
+            'naam' => $request->naam,
+            'beschrijving' => $request->beschrijving,
+            'onderwerp' => $request->onderwerp,
+            'abonnement_type_id' => $request->abonnement_type_id,
+        ]);
+
+        Video::create([
+            'les_id' => $les->id,
+            'naam' => $request->video_naam,
+            'bestand' => $youtubeUrl,
+        ]);
+
+        return redirect()
+            ->route('lessen')
+            ->with('success', 'succesvol toegevoegd');
     }
 }

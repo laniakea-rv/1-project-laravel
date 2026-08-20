@@ -1,6 +1,11 @@
 @extends ("layouts.app")
 @section("content")
 
+@if(auth()->user()->is_admin)
+    <a href="{{ route('lessen.lescreate') }}">
+        <button type="button">Les aanmaken</button>
+    </a>
+@endif
 <form method="GET" action="{{ route('lessen') }}">
     <label for="onderwerp">Onderwerp:</label>
 

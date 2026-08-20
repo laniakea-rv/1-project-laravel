@@ -10,7 +10,9 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\WorkshopController;
 
 Route::middleware('guest')->group(function () {
-    Route::get('/', function () {return view('login');});
+    Route::get('/', function () {
+        return view('login');
+    });
     Route::get('/login', [AuthController::class, 'index'])->name('login');
     Route::get('/register', [AuthController::class, 'register'])->name('login.register');
     Route::post('/login', [AuthController::class, 'login']);
@@ -19,11 +21,15 @@ Route::middleware('guest')->group(function () {
 
 
 Route::middleware('auth')->group(function () {
-    Route::get('/', function () {return view('home');});
+    Route::get('/', function () {
+        return view('home');
+    });
 
     Route::get('/lessen', [LesController::class, 'index'])->name('lessen');
     Route::get('/lessen/{les}', [LesController::class, 'show'])->name('lessen.show');
     Route::post('/lessen/{les}/afronden', [LesController::class, 'afronden'])->name('lessen.lesindex');
+    Route::get('/createles', [LesController::class, 'create'])->name('lessen.lescreate');
+    Route::post('/createles', [LesController::class, 'store'])->name('lessen.store');
 
     Route::get('/muziek', [MuziekController::class, 'index'])->name('muziek');
     Route::get('/muziek/create', [MuziekController::class, 'create'])->name('muziek.create');
