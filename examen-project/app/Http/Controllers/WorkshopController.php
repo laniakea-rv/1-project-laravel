@@ -38,7 +38,7 @@ class WorkshopController extends Controller
                 'beschrijving' => 'required|string',
                 'locatie' => 'required|string|max:255',
                 'tijd' => 'required|date',
-                'afbeelding' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+                'afbeelding' => 'nullable|image|mimes:jpg,jpeg,png|max:20480',
             ]);
 
             $update = [
@@ -75,7 +75,7 @@ class WorkshopController extends Controller
             'beschrijving' => 'required|string',
             'locatie' => 'required|string|max:255',
             'tijd' => 'required|date',
-            'afbeelding' => 'required|image|mimes:jpg,jpeg,png|max:2048',
+            'afbeelding' => 'required|image|mimes:jpg,jpeg,png|max:20480',
         ]);
 
         $afbeeldingPad = $request->file('afbeelding')->store('workshop-afbeeldingen', 'public');

@@ -27,7 +27,7 @@ class MuziekController extends Controller
                 'beschrijving' => 'nullable|string|max:255',
                 'bestand' => 'required|file|mimes:mp3,wav|max:20480',
                 'prijs' => 'required|numeric|min:0',
-                'afbeelding' => 'required|image|mimes:jpg,jpeg,png|max:2048',
+                'afbeelding' => 'required|image|mimes:jpg,jpeg,png|max:20480',
             ]);
 
             $bestandPad = $request->file('bestand')->store('muziek', 'public');
@@ -61,7 +61,7 @@ class MuziekController extends Controller
                 'beschrijving' => 'nullable|string|max:255',
                 'bestand' => 'nullable|file|mimes:mp3,wav|max:20480',
                 'prijs' => 'required|numeric|min:0',
-                'afbeelding' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+                'afbeelding' => 'nullable|image|mimes:jpg,jpeg,png|max:20480',
             ]);
 
             $update = [
