@@ -1,61 +1,59 @@
 @extends("layouts.app")
-
 @section("content")
 
-    <body>
-        <div>
+    <body class="bg-gray-100">
+        <div class="w-5/6 mx-auto mt-10">
             @if(session('error'))
                 <p>{{ session('error') }}</p>
             @endif
-
             @if(session('success'))
                 <p>{{ session('success') }}</p>
             @endif
-
             @if ($workshop)
-                <a href="{{ route('workshops') }}">terug naar workshops</a>
-
-                <tr>
+                <a href="{{ route('workshops') }}">
+                    terug naar workshops
+                </a>
+                <div class="bg-white p-5 mt-4">
                     @if($workshop->afbeelding)
-                        <td>
-                            <img src="{{ asset('storage/' . $workshop->afbeelding) }}">
-                        </td>
+                        <img src="{{ asset('storage/' . $workshop->afbeelding) }}" class="w-64 h-64 object-cover"
+                            alt="Workshop afbeelding">
                     @endif
-
-                    <td>{{ $workshop->naam }}</td>
-
-                    <td>
-                        <p>
-                            {{ $workshop->beschrijving }}
-                        </p>
-                    </td>
-
-                    <td>{{ $workshop->tijd }}</td>
-                    <td>{{ $workshop->locatie }}</td>
-
-                    <td>
+                    <h1 class="text-2xl font-bold mt-4">
+                        {{ $workshop->naam }}
+                    </h1>
+                    <p class="mt-2">
+                        {{ $workshop->beschrijving }}
+                    </p>
+                    <p class="mt-2">
+                        {{ $workshop->tijd }}
+                    </p>
+                    <p>
+                        {{ $workshop->locatie }}
+                    </p>
+                    <div class="mt-4">
                         @if(auth()->user()->workshops->contains($workshop->id))
-                            <button type="button" disabled>
+                            <button type="button" disabled class="bg-gray-200 px-3 py-1">
                                 al ingeschreven
                             </button>
                         @else
                             <form action="{{ route('workshop.inschrijven') }}" method="post">
                                 @csrf
                                 <input type="hidden" name="id" value="{{ $workshop->id }}">
-                                <button type="submit">
+
+                                <button type="submit" class="bg-gray-200 px-3 py-1">
                                     inschrijven
                                 </button>
                             </form>
                         @endif
-                    </td>
+                    </div>
                     @if(auth()->user() && auth()->user()->is_admin)
-                        <td>
+                        <div class="mt-4">
                             <a href="{{ route('workshop.edit', $workshop->id) }}">
                                 bewerk workshop
                             </a>
-                        </td>
+                        </div>
                     @endif
-                </tr>
+                </div>
             @endif
         </div>
     </body>
