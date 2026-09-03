@@ -1,37 +1,48 @@
 @extends ("layouts.app")
 @section("content")
 
-    <body>
-        <div>
+    <body class="bg-gray-100">
+        <div class="w-5/6 mx-auto mt-10">
+
             @if(session('error'))
                 <p>{{ session('error') }}</p>
             @endif
-            @foreach ($workshops as $workshop)
-                <tr>
-                    @if($workshop->afbeelding)
-                        <td>
-                            <img src="{{ asset('storage/' . $workshop->afbeelding) }}">
-                        </td>
-                    @endif
-                    <td>{{ $workshop->naam }}</td>
-                    <td>{{ $workshop->tijd }}</td>
-                    <td>{{ $workshop->locatie }}</td>
-                    <td>
-                        <a href="{{ route('workshop.show', $workshop->id) }}">
+
+            @if(auth()->user() && auth()->user()->is_admin)
+                <a href="{{ route('workshop.create') }}">
+                    maak workshop aan
+                </a>
+            @endif
+
+            <div class="mt-5">
+                @foreach ($workshops as $workshop)
+
+                    <div class="bg-white p-4 mb-4 flex items-center gap-4">
+
+                        @if($workshop->afbeelding)
+                            <img src="{{ asset('storage/' . $workshop->afbeelding) }}" class="w-24 h-24 object-cover"
+                                alt="Workshop afbeelding">
+                        @endif
+
+                        <div>
+                            <p class="font-bold">{{ $workshop->naam }}</p>
+                            <p>{{ $workshop->tijd }}</p>
+                            <p>{{ $workshop->locatie }}</p>
+
+                            @if(auth()->user()->workshops->contains($workshop->id))
+                                <small>Al ingeschreven</small>
+                            @endif
+                        </div>
+
+                        <a class="ml-auto" href="{{ route('workshop.show', $workshop->id) }}">
                             Bekijk workshop
                         </a>
-                        @if(auth()->user()->workshops->contains($workshop->id))
-                            <small>Al ingeschreven</small>
-                        @endif
-                    </td>
-                </tr>
-                <br>
-            @endforeach
-            @if(auth()->user() && auth()->user()->is_admin)
-                <td><a href="{{ route('workshop.create') }}">
-                        maak workshop aan
-                    </a></td>
-            @endif
+
+                    </div>
+
+                @endforeach
+            </div>
+
         </div>
     </body>
 @endsection
