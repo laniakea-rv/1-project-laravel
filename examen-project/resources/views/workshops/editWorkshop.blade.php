@@ -19,9 +19,18 @@
                 <label for="locatie">locatie</label>
                 <input type="text" name="locatie" id="locatie" value="{{ $workshop->locatie }}" required><br>
                 <label for="afbeelding">afbeelding</label>
-                <input type="file" name="afbeelding" id="afbeelding" accept="image/*" required><br>
+                <input type="file" name="afbeelding" id="afbeelding" accept=".jpg,.jpeg,.png" required><br>
                 <button type="submit">Bewerk workshop</button>
             </form>
+            <script>
+                document.getElementById('afbeelding').addEventListener('change', function () {
+                    const maxSize = 20 * 1024 * 1024;
+                    if (this.files[0] && this.files[0].size > maxSize) {
+                        alert('De afbeelding mag maximaal 20 MB groot zijn.');
+                        this.value = '';
+                    }
+                });
+            </script>
         </div>
     </body>
 @endsection
