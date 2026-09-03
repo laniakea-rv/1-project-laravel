@@ -20,5 +20,6 @@ class DatabaseSeeder extends Seeder
         $this->call([UserSeeder::class]);
         $this->call([VideoSeeder::class]);
         $this->call([Muziekseeder::class]);
+        $this->call([WorkshopSeeder::class]);
     }
 }
