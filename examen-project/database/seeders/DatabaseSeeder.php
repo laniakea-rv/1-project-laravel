@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
         $this->call([LesSeeder::class]);
         $this->call([UserSeeder::class]);
         $this->call([VideoSeeder::class]);
-        $this->call([Muziekseeder::class]);
+        $this->call([MuziekSeeder::class]);
         $this->call([WorkshopSeeder::class]);
     }
 }

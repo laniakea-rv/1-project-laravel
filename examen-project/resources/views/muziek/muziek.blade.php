@@ -1,36 +1,43 @@
 @extends ("layouts.app")
 @section("content")
-  <table class="flex justify-center flex-row">
+
+  <div class="grid grid-cols-6 gap-4">
     @foreach ($muziek as $item)
-    <div class="flex flex-r">
-      <tr class="flex flex-col justify-center">
-      <tr class="bg-gray-50 shadow-lg h-2/6 w-7/5 flex flex-col items-center rounded" data-id="{{ $item->id }}">
-        <td class="text-3xl my-5">{{ $item->naam }}</td>
-        <td>{{ $item->beschrijving }}</td>
-        
+      <div class="bg-gray-50 shadow-lg flex flex-col items-center rounded p-2" data-id="{{ $item->id }}">
         @if($item->afbeelding)
-          <td>
-            <img  class="w-100 "src="{{ asset('storage/' . $item->afbeelding) }}">
-          </td>
+          <div>
+            <img src="{{ asset('storage/' . $item->afbeelding) }}"
+              onerror="this.onerror=null; this.src='{{ asset('storage/default.png') }}';" class="w-32 h-32 object-cover">
+          </div>
         @endif
-        <td>€{{ $item->prijs }}</td>
+        <h1 class="text-xl my-2">
+          {{ $item->naam }}
+        </h1>
+        <p class="text-sm text-center">
+          {{ $item->beschrijving }}
+        </p>
+        <span class="my-2">
+          €{{ $item->prijs }}
+        </span>
         @if($item->bestand)
-          <td>
-            <audio controls>
+          <div>
+            <audio controls class="w-40" controls controlsList="nodownload noplaybackrate">
               <source src="{{ asset('storage/' . $item->bestand) }}" type="audio/mpeg">
               Your browser does not support the audio element.
             </audio>
-          </td>
+          </div>
         @endif
-        <td class="bg-green-600 text-white w-4/8 text-xl my-5 flex justify-center"><a href="{{ asset('storage/' . $item->bestand) }}" download class="btn btn-primary">
+        <div class="bg-green-600 text-white my-2 px-3 py-1">
+          <a href="{{ asset('storage/' . $item->bestand) }}" download>
             Kopen
-          </a></td>
-        <td><a href="{{ route('muziek.edit', $item) }}">
+          </a>
+        </div>
+        <div>
+          <a href="{{ route('muziek.edit', $item) }}">
             edit
-          </a></td>
-      </tr>
-      
-    </div>
+          </a>
+        </div>
+      </div>
     @endforeach
-  </table>
+  </div>
 @endsection

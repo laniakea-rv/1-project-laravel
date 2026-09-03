@@ -6,7 +6,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\Muziek;
 
-class Muziekseeder extends Seeder
+class MuziekSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,27 +14,109 @@ class Muziekseeder extends Seeder
     public function run(): void
     {
         Muziek::create([
-            'naam'=>'samballen',
-            'beschrijving'=>'de beste slechtste en enigste augurkpunkband',
+            'naam'=>'ik keek in de frituur en zak sam',
+            'beschrijving'=>'een zeer melodieus en experimenteel nummer, erg mooi',
             'bestand'=>'barkfart.mp3',
             'prijs'=>30.00,
-            'afbeelding'=>'foto/foto/loctie',
+            'afbeelding'=>'foto/foto/locatie',
         ]);
-
         Muziek::create([
-            'naam'=>'samballen',
-            'beschrijving'=>'de beste slechtste en enigste augurkpunkband',
+            'naam'=>'sofie drumt nooit',
+            'beschrijving'=>'larp',
             'bestand'=>'barkfart.mp3',
             'prijs'=>30.00,
-            'afbeelding'=>'foto/foto/loctie',
+            'afbeelding'=>'foto/foto/locatie',
         ]);
-
         Muziek::create([
-            'naam'=>'samballen',
-            'beschrijving'=>'de beste slechtste en enigste augurkpunkband',
+            'naam'=>'een mooi derde liedje',
+            'beschrijving'=>'peak nummer',
             'bestand'=>'barkfart.mp3',
             'prijs'=>30.00,
-            'afbeelding'=>'foto/foto/loctie',
+            'afbeelding'=>'foto/foto/locatie',
+        ]);
+        Muziek::create([
+            'naam'=>'ik keek in de frituur en zak sam',
+            'beschrijving'=>'een zeer melodieus en experimenteel nummer, erg mooi',
+            'bestand'=>'barkfart.mp3',
+            'prijs'=>30.00,
+            'afbeelding'=>'foto/foto/locatie',
+        ]);
+        Muziek::create([
+            'naam'=>'sofie drumt nooit',
+            'beschrijving'=>'larp',
+            'bestand'=>'barkfart.mp3',
+            'prijs'=>30.00,
+            'afbeelding'=>'foto/foto/locatie',
+        ]);
+        Muziek::create([
+            'naam'=>'een mooi derde liedje',
+            'beschrijving'=>'peak nummer',
+            'bestand'=>'barkfart.mp3',
+            'prijs'=>30.00,
+            'afbeelding'=>'foto/foto/locatie',
+        ]);
+        Muziek::create([
+            'naam'=>'ik keek in de frituur en zak sam',
+            'beschrijving'=>'een zeer melodieus en experimenteel nummer, erg mooi',
+            'bestand'=>'barkfart.mp3',
+            'prijs'=>30.00,
+            'afbeelding'=>'foto/foto/locatie',
+        ]);
+        Muziek::create([
+            'naam'=>'sofie drumt nooit',
+            'beschrijving'=>'larp',
+            'bestand'=>'barkfart.mp3',
+            'prijs'=>30.00,
+            'afbeelding'=>'foto/foto/locatie',
+        ]);
+        Muziek::create([
+            'naam'=>'een mooi derde liedje',
+            'beschrijving'=>'peak nummer',
+            'bestand'=>'barkfart.mp3',
+            'prijs'=>30.00,
+            'afbeelding'=>'foto/foto/locatie',
+        ]);
+        Muziek::create([
+            'naam'=>'ik keek in de frituur en zak sam',
+            'beschrijving'=>'een zeer melodieus en experimenteel nummer, erg mooi',
+            'bestand'=>'barkfart.mp3',
+            'prijs'=>30.00,
+            'afbeelding'=>'foto/foto/locatie',
+        ]);
+        Muziek::create([
+            'naam'=>'sofie drumt nooit',
+            'beschrijving'=>'larp',
+            'bestand'=>'barkfart.mp3',
+            'prijs'=>30.00,
+            'afbeelding'=>'foto/foto/locatie',
+        ]);
+        Muziek::create([
+            'naam'=>'een mooi derde liedje',
+            'beschrijving'=>'peak nummer',
+            'bestand'=>'barkfart.mp3',
+            'prijs'=>30.00,
+            'afbeelding'=>'foto/foto/locatie',
+        ]);
+        Muziek::create([
+            'naam'=>'ik keek in de frituur en zak sam',
+            'beschrijving'=>'een zeer melodieus en experimenteel nummer, erg mooi',
+            'bestand'=>'barkfart.mp3',
+            'prijs'=>30.00,
+            'afbeelding'=>'foto/foto/locatie',
+        ]);
+        Muziek::create([
+            'naam'=>'sofie drumt nooit',
+            'beschrijving'=>'larp',
+            'bestand'=>'barkfart.mp3',
+            'prijs'=>30.00,
+            'afbeelding'=>'foto/foto/locatie',
+        ]);
+        Muziek::create([
+            'naam'=>'een mooi derde liedje',
+            'beschrijving'=>'peak nummer',
+            'bestand'=>'barkfart.mp3',
+            'prijs'=>30.00,
+            'afbeelding'=>'foto/foto/locatie',
         ]);
     }
 }
