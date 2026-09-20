@@ -18,6 +18,12 @@ class UserController extends Controller
 
         return view('users.userDisplay', compact('user', 'huidigAbonnement'));
     }
+    public function showusers()
+    {
+
+        $users = User::with('abonnementen.abonnementtype')->get();
+        return view('users.userOverview', compact('users'));
+    }
 
     public function editUser()
     {
