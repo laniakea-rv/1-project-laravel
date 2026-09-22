@@ -1,7 +1,7 @@
 @extends ("layouts.app")
 @section("content")
 
-    <body class="bg-gray-100">
+    <body class="">
         <div class="w-5/6 mx-auto mt-10">
 
             @if(session('error'))
@@ -17,7 +17,7 @@
             <div class="mt-5">
                 @foreach ($workshops as $workshop)
 
-                    <div class="bg-white p-4 mb-4 flex items-center gap-4">
+                    <div class="bg-gray-100 rounded p-4 mb-4 flex items-center gap-4">
 
                         @if($workshop->afbeelding)
                             <img src="{{ asset('storage/' . $workshop->afbeelding) }}" onerror="this.onerror=null; this.src='{{ asset('storage/default.png') }}';" class="w-24 h-24 object-cover"

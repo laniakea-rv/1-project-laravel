@@ -42,7 +42,7 @@
                     <strong>Laatst bekeken</strong>
                 @endif
 
-                <li class="les {{ $les->klasse }} bg-white p-5">
+                <li class="les {{ $les->klasse }} bg-gray-100 rounded p-5">
                     <h2 class="text-xl font-bold">{{ $les->naam }}</h2>
 
                     <p class="mt-2">{{ $les->beschrijving }}</p>
