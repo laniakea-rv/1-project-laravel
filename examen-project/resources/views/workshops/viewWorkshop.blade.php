@@ -1,7 +1,7 @@
 @extends("layouts.app")
 @section("content")
 
-    <body class="bg-gray-100">
+    <body class="">
         <div class="w-5/6 mx-auto mt-10">
             @if(session('error'))
                 <p>{{ session('error') }}</p>

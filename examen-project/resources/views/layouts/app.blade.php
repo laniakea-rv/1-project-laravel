@@ -33,7 +33,7 @@
                 class="bg-white text-black px-6 py-3 rounded shadow hover:bg-gray-400">
                 Stream
             </a>
-            <p class="text-5xl">Welkom, {{ Auth::user()->name }}</p>
+            <a href="{{ route('home') }} " class="text-5xl">Welkom, {{ Auth::user()->name }}</a>
             <a href="{{ route('workshops') }}"
                 class="bg-white text-black px-6 py-3 rounded shadow hover:bg-gray-400">
                 Workshops

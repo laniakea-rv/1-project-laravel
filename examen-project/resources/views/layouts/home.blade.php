@@ -27,7 +27,7 @@
                 </button>
             </form>
 
-            <p class="text-5xl">Welkom, {{ Auth::user()->name }}</p>
+            <p href="{{ route('home') }} " class="text-5xl">Welkom, {{ Auth::user()->name }}</p>
             <a href="{{ route('user') }}" class="bg-white text-black px-6 py-3 rounded shadow hover:bg-gray-400">
                 Profiel
             </a>
